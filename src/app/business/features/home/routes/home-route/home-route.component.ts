@@ -1,9 +1,10 @@
 import { Component, HostBinding } from '@angular/core';
+import { ButtonModule } from '../../../../../core/modules/button/button.module';
 
 @Component({
   selector: 'horus-home-route',
   standalone: true,
-  imports: [],
+  imports: [ButtonModule],
   templateUrl: './home-route.component.html',
   styleUrl: './home-route.component.sass',
 })
