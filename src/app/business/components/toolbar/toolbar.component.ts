@@ -4,13 +4,18 @@ import { HeaderComponent } from '../header/header.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCommonModule } from '@angular/material/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'horus-toolbar',
   standalone: true,
-  imports: [HeaderComponent, MatIconModule, MatToolbarModule, MatButtonModule],
+  imports: [
+    HeaderComponent,
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule,
+    RouterLink,
+  ],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.sass',
 })
@@ -20,6 +25,7 @@ export class ToolbarComponent {
   constructor(private readonly application: ApplicationService) {}
 
   openClose(): void {
-    this.application.setExpanded(!this.expanded);
+    this.expanded = !this.expanded;
+    this.application.setExpanded(this.expanded);
   }
 }

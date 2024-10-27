@@ -1,0 +1,74 @@
+// @use "@angular/material" as mat;
+
+// $my-primary: mat.m2-define-palette(mat.$m2-indigo-palette, 500);
+// $my-accent: mat.m2-define-palette(mat.$m2-pink-palette);
+// $my-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+// $my-theme: mat.m2-define-light-theme(
+//   (
+//     color: (
+//       primary: $my-primary,
+//       accent: $my-accent,
+//       warn: $my-warn,
+//     ),
+//     typography: mat.m2-define-typography-config(),
+//     density: 0,
+//   )
+// );
+
+// @include mat.all-component-themes($my-theme);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.main-root {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+.main-layout-route {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.main-layout-route-content {
+  display: flex;
+  flex: 1;
+}
+.main-page-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 32px;
+  overflow: hidden;
+  background-color: white;
+}
+.main-page-item {
+  padding: 32px;
+  background-color: #6f6e6d !important;
+  border-radius: 8px;
+  box-shadow: 2px 2px 16px 2px rgba(1, 9, 17, 0.05);
+}
+.flex-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+}
+.mat-drawer-content {
+  display: flex !important;
+}
+
+// mat-toolbar {
+//   background-color: mat.get-theme-color($my-theme, accent);
+// }

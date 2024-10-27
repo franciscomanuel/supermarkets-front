@@ -1,13 +1,17 @@
-<mat-toolbar class="justify-content-between tertiary-checkbox">
-  <section class="logo">
+<mat-toolbar class="justify-between" color="primary">
+  <section class="flex items-center">
     <button
       mat-icon-button
-      class="menu border-0 rounded-circle text-center"
+      color="primary"
+      class="menu flex justify-center items-center"
       (click)="openClose()"
     >
-      <mat-icon mat-list-icon class="icon-center">menu</mat-icon>
+      <mat-icon mat-list-icon class="icon-center" fontIcon="menu"></mat-icon>
     </button>
-    <span class="ms-5" routerLink="home">My App</span>
+
+    <a class="ml-5" routerLink="home" routerLinkActive="active">
+      <button mat-button color="primary">Supermarkets</button>
+    </a>
   </section>
 
   <section class="header">

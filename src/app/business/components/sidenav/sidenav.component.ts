@@ -6,6 +6,7 @@ import { MatListModule } from '@angular/material/list';
 import { MENU_SIDENAV } from '../../constants/main-content-route.constants';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { JsonPipe } from '@angular/common';
+import { ApplicationService } from '../../services/application/application.service';
 
 @Component({
   selector: 'horus-sidenav',
@@ -26,4 +27,6 @@ export class SidenavComponent {
   @HostBinding('class') clasName = 'flex-container';
 
   readonly menuSidenav = MENU_SIDENAV;
+
+  constructor(public readonly applicationService: ApplicationService) {}
 }
