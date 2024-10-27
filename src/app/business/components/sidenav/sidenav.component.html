@@ -1,14 +1,12 @@
 <mat-sidenav-container autosize class="flex-container">
-  <mat-sidenav
-    #sidenav
-    mode="side"
-    opened="true"
-    class="sidenav"
-    [opened]="applicationService.getExpanded()"
-  >
+  <mat-sidenav #sidenav mode="side" opened="true" class="sidenav">
     <mat-nav-list>
       @for (option of menuSidenav; track option.title) {
-      <mat-list-item [routerLink]="option.link" routerLinkActive="active">
+      <mat-list-item
+        [routerLink]="option.link"
+        routerLinkActive="active"
+        class="sidenav-hover"
+      >
         <span class="flex">
           <mat-icon
             mat-list-icon
@@ -16,7 +14,9 @@
             color="primary"
             [fontIcon]="option.icon"
           ></mat-icon>
-          <span class="pl-2">{{ option.title }}</span>
+          @if (applicationService.getExpanded()) {
+          <span class="pl-2" @toggleText>{{ option.title }}</span>
+          }
         </span>
       </mat-list-item>
       }

@@ -1,6 +1,6 @@
-// mat-toolbar
-//   background-color: #ffd9e1
+@use "@angular/material" as mat
+@import "./../../../../styles/_theme.scss"
 
 .menu
   &:hover
-    box-shadow: 0px 0px 3px 2px #C0C0C0
+    box-shadow: 0px 0px 3px 2px mat.get-theme-color($light-theme, primary, 400) !important

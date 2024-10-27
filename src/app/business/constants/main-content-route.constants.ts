@@ -4,7 +4,7 @@ export const MENU_SIDENAV: MenuSinenav[] = [
   {
     title: 'Home',
     icon: 'home',
-    link: 'Home',
+    link: 'home',
     hide: false,
   },
   {

@@ -1,7 +1,15 @@
 
+@use "@angular/material" as mat
+@import "./../../../../styles/_theme.scss"
+
 .sidenav
   width: fit-content !important
   padding: 0px 8px
   overflow: auto
   border-right: 1px solid #d6c2c5 !important
   border-radius: 0 !important
+
+.sidenav-hover
+  &:hover,
+  &:focus
+    background-color: mat.get-theme-color($light-theme, primary, 900) !important
