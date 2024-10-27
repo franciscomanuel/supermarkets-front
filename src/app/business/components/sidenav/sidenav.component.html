@@ -1,0 +1,22 @@
+<mat-sidenav-container autosize class="flex-container">
+  <mat-sidenav #sidenav mode="side" opened="true">
+    <mat-nav-list>
+      @for (option of menuSidenav; track option.title) {
+      <mat-list-item [routerLink]="option.link" routerLinkActive="active">
+        <span class="d-flex">
+          <mat-icon
+            mat-list-icon
+            [fontIcon]="option.icon"
+            class="pe-2"
+          ></mat-icon>
+          <span class="pe-2">{{ option.title }}</span>
+        </span>
+      </mat-list-item>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="main-layout-route">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

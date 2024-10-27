@@ -9,9 +9,9 @@ export const routes: Routes = [
       ),
     children: [
       {
-        path: '',
+        path: 'products',
         loadChildren: () =>
-          import('./modules/product/product.routes').then((c) => c.routes),
+          import('./features/product/product.routes').then((c) => c.routes),
       },
     ],
   },

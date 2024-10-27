@@ -26,6 +26,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideClientHydration(
       withHttpTransferCacheOptions({ includePostRequests: true }) // Cachea las peticiones post para mejorar el rendimiento de la aplicación
-    ),
+    ), provideAnimationsAsync(), provideAnimationsAsync(),
   ],
 };
