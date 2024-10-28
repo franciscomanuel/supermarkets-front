@@ -1,0 +1,27 @@
+@if (!!link) {
+<a
+  mat-flat-button
+  target="_blank"
+  [color]="color"
+  [disabled]="disabled"
+  [matTooltip]="tooltip"
+  [href]="link"
+>
+  @if (!!icon) {
+  <mat-icon [fontIcon]="icon"></mat-icon>
+  }
+  {{ text }}
+</a>
+} @else {
+<button
+  mat-flat-button
+  [color]="color"
+  [disabled]="disabled"
+  [matTooltip]="tooltip"
+>
+  @if (!!icon) {
+  <mat-icon [fontIcon]="icon"></mat-icon>
+  }
+  {{ text }}
+</button>
+}

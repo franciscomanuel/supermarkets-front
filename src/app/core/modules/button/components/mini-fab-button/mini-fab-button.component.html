@@ -1,0 +1,21 @@
+@if (!!link) {
+<a
+  mat-mini-fab
+  target="_blank"
+  [color]="color"
+  [disabled]="disabled"
+  [matTooltip]="tooltip"
+  [href]="link"
+>
+  <mat-icon [fontIcon]="icon"></mat-icon>
+</a>
+} @else {
+<button
+  mat-mini-fab
+  [color]="color"
+  [disabled]="disabled"
+  [matTooltip]="tooltip"
+>
+  <mat-icon [fontIcon]="icon"></mat-icon>
+</button>
+}

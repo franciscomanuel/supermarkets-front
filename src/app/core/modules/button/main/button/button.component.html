@@ -1,0 +1,79 @@
+@switch (type) { @case ("basic") {
+<horus-basic-button
+  [text]="text"
+  [color]="color"
+  [disabled]="disabled"
+  [icon]="icon"
+  [link]="link"
+  [tooltip]="tooltip"
+/>
+} @case ("raised") {
+<horus-raised-button
+  [text]="text"
+  [color]="color"
+  [disabled]="disabled"
+  [icon]="icon"
+  [link]="link"
+  [tooltip]="tooltip"
+/>
+} @case ("stroked") {
+<horus-stroked-button
+  [text]="text"
+  [color]="color"
+  [disabled]="disabled"
+  [icon]="icon"
+  [link]="link"
+  [tooltip]="tooltip"
+/>
+} @case ("flat") {
+<horus-flat-button
+  [text]="text"
+  [color]="color"
+  [disabled]="disabled"
+  [icon]="icon"
+  [link]="link"
+  [tooltip]="tooltip"
+/>
+} @case ("icon") {
+<horus-icon-button
+  [color]="color"
+  [disabled]="disabled"
+  [icon]="icon"
+  [link]="link"
+  [tooltip]="tooltip"
+></horus-icon-button>
+} @case ("fab") {
+<horus-fab-button
+  [color]="color"
+  [disabled]="disabled"
+  [icon]="icon"
+  [link]="link"
+  [tooltip]="tooltip"
+/>
+} @case ("mini-fab") {
+<horus-mini-fab-button
+  [color]="color"
+  [disabled]="disabled"
+  [icon]="icon"
+  [link]="link"
+  [tooltip]="tooltip"
+/>
+} @case ("extended-fab") {
+<horus-extended-fab-button
+  [text]="text"
+  [color]="color"
+  [disabled]="disabled"
+  [icon]="icon"
+  [link]="link"
+  [tooltip]="tooltip"
+/>
+} @default {
+<horus-basic-button
+  [text]="text"
+  [color]="color"
+  [disabled]="disabled"
+  [icon]="icon"
+  [link]="link"
+  [tooltip]="tooltip"
+/>
+} }
