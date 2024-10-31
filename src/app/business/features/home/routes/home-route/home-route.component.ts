@@ -1,8 +1,9 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, signal } from '@angular/core';
 import { ButtonModule } from '../../../../../core/modules/button/button.module';
 import { TableModule } from '../../../../../core/modules/table/table.module';
 import { PAGE_SIZE_OPTIONS } from '../../../../../core/modules/table/constants/table.constants';
 import { MatTableDataSource } from '@angular/material/table';
+import { AccordionModule } from '../../../../../core/modules/accordion/accordion.module';
 
 interface DataSource {
   id: number;
@@ -12,7 +13,7 @@ interface DataSource {
 @Component({
   selector: 'horus-home-route',
   standalone: true,
-  imports: [ButtonModule, TableModule],
+  imports: [ButtonModule, TableModule, AccordionModule],
   templateUrl: './home-route.component.html',
   styleUrl: './home-route.component.sass',
 })
@@ -21,6 +22,7 @@ export class HomeRouteComponent implements OnInit {
 
   readonly pageSizeOptions = PAGE_SIZE_OPTIONS;
   datasource: MatTableDataSource<DataSource> = new MatTableDataSource();
+  step = signal(0);
 
   ngOnInit(): void {
     this.datasource.data = [
@@ -60,5 +62,17 @@ export class HomeRouteComponent implements OnInit {
         surname: 'Surname 7',
       },
     ];
+  }
+
+  setStep(index: number) {
+    this.step.set(index);
+  }
+
+  nextStep() {
+    this.step.update((i) => i + 1);
+  }
+
+  prevStep() {
+    this.step.update((i) => i - 1);
   }
 }

@@ -10,4 +10,38 @@
     <horus-text-column name="name" title="Name"></horus-text-column>
     <horus-text-column name="surname" title="Surname"></horus-text-column>
   </horus-client-table>
+
+  <horus-accordion-2
+    class="mt-4"
+    title="Title"
+    description="description"
+    icon="add"
+    [expanded]="true"
+  >
+    <div>Hola mundo</div>
+  </horus-accordion-2>
+
+  <horus-accordion (prevStep)="prevStep()" (nextStep)="nextStep()">
+    <horus-expansion-panel
+      title="Expansion 1"
+      description="Description 1"
+      icon="add"
+      [expanded]="step() === 0"
+      (opened)="setStep(0)"
+    ></horus-expansion-panel>
+    <horus-expansion-panel
+      title="Expansion 2"
+      description="Description 2"
+      icon="add"
+      [expanded]="step() === 1"
+      (opened)="setStep(1)"
+    ></horus-expansion-panel>
+    <horus-expansion-panel
+      title="Expansion 3"
+      description="Description 3"
+      icon="add"
+      [expanded]="step() === 3"
+      (opened)="setStep(3)"
+    ></horus-expansion-panel>
+  </horus-accordion>
 </section>

@@ -1,0 +1,13 @@
+<mat-expansion-panel [disabled]="disabled" [expanded]="expanded">
+  <mat-expansion-panel-header>
+    <mat-panel-title>{{ title }}</mat-panel-title>
+    <mat-panel-description class="justify-between items-center">
+      {{ description }}
+      @if (!!icon) {
+      <mat-icon [fontIcon]="icon"></mat-icon>
+      }
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <ng-content></ng-content>
+</mat-expansion-panel>
