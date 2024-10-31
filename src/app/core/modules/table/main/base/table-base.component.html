@@ -1,0 +1,23 @@
+<div class="table-container mat-elevation-z8" [ngClass]="tableSize">
+  <table mat-table matSort [ngClass]="tableSize" [id]="id">
+    @if (customHeaders.length > 0) {
+    <tr mat-header-row *matHeaderRowDef="customHeaders; sticky: true"></tr>
+    }
+    <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns; let i = index"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell no-data" [attr.colspan]="columns.length">
+        {{ !!noDataMessage ? noDataMessage : "No data" }}
+      </td>
+    </tr>
+  </table>
+
+  <div [hidden]="!showPaginator">
+    <mat-paginator
+      [length]="total"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+</div>

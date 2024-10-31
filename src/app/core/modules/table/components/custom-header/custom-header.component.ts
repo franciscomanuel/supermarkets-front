@@ -1,12 +1,22 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  forwardRef,
+  TemplateRef,
+} from '@angular/core';
+import { HeaderBaseComponent } from '../base/header/header-base.component';
 
 @Component({
   selector: 'horus-custom-header',
-  standalone: true,
-  imports: [],
   templateUrl: './custom-header.component.html',
-  styleUrl: './custom-header.component.sass'
+  providers: [
+    {
+      provide: HeaderBaseComponent,
+      useExisting: forwardRef(() => CustomHeaderComponent),
+    },
+  ],
 })
-export class CustomHeaderComponent {
-
+export class CustomHeaderComponent extends HeaderBaseComponent {
+  @ContentChild('headerTemplate', { static: true })
+  headerTemplate!: TemplateRef<unknown>;
 }

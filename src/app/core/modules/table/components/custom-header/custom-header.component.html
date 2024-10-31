@@ -1,1 +1,10 @@
-<p>custom-header works!</p>
+<ng-container [matColumnDef]="name">
+  <th
+    *matHeaderCellDef
+    mat-header-cell
+    [attr.colSpan]="colSpan"
+    class="p-0 text-base font-bold"
+  >
+    <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+  </th>
+</ng-container>

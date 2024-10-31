@@ -1,1 +1,19 @@
-<p>custom-column-sorted works!</p>
+<ng-container [matColumnDef]="name">
+  <th
+    *matHeaderCellDef
+    mat-header-cell
+    mat-sort-header
+    class="text-base font-bold"
+  >
+    <span [innerHTML]="title"></span>
+    <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
+  </th>
+  <td mat-cell *matCellDef="let row; let i = index; let dataIndex = dataIndex">
+    <ng-container
+      *ngTemplateOutlet="
+        cellTemplate;
+        context: { $implicit: row, i, dataIndex }
+      "
+    ></ng-container>
+  </td>
+</ng-container>

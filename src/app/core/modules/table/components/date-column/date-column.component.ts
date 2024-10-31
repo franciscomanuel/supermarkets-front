@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
+import { ColumnBaseComponent } from '../base/column/column-base.component';
 
 @Component({
   selector: 'horus-date-column',
-  standalone: true,
-  imports: [],
   templateUrl: './date-column.component.html',
-  styleUrl: './date-column.component.sass'
+  providers: [
+    {
+      provide: ColumnBaseComponent,
+      useExisting: forwardRef(() => DateColumnComponent),
+    },
+  ],
 })
-export class DateColumnComponent {
-
+export class DateColumnComponent extends ColumnBaseComponent {
+  @Input() pattern!: string;
 }

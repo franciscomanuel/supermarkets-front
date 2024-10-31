@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
+import { ColumnBaseComponent } from '../base/column/column-base.component';
 
 @Component({
   selector: 'horus-text-column',
-  standalone: true,
-  imports: [],
   templateUrl: './text-column.component.html',
-  styleUrl: './text-column.component.sass'
+  providers: [
+    {
+      provide: ColumnBaseComponent,
+      useExisting: forwardRef(() => TextColumnComponent),
+    },
+  ],
 })
-export class TextColumnComponent {
-
-}
+export class TextColumnComponent extends ColumnBaseComponent {}

@@ -1,12 +1,24 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  forwardRef,
+  TemplateRef,
+} from '@angular/core';
+import { ColumnBaseComponent } from '../base/column/column-base.component';
 
 @Component({
   selector: 'horus-custom-column',
-  standalone: true,
-  imports: [],
   templateUrl: './custom-column.component.html',
-  styleUrl: './custom-column.component.sass'
+  providers: [
+    {
+      provide: ColumnBaseComponent,
+      useExisting: forwardRef(() => CustomColumnComponent),
+    },
+  ],
 })
-export class CustomColumnComponent {
-
+export class CustomColumnComponent extends ColumnBaseComponent {
+  @ContentChild('headerTemplate', { static: true })
+  headerTemplate!: TemplateRef<unknown>;
+  @ContentChild('cellTemplate', { static: true })
+  cellTemplate!: TemplateRef<unknown>;
 }

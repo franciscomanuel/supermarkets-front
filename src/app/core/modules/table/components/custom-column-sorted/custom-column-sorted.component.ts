@@ -1,12 +1,24 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  forwardRef,
+  TemplateRef,
+} from '@angular/core';
+import { ColumnBaseComponent } from '../base/column/column-base.component';
 
 @Component({
   selector: 'horus-custom-column-sorted',
-  standalone: true,
-  imports: [],
   templateUrl: './custom-column-sorted.component.html',
-  styleUrl: './custom-column-sorted.component.sass'
+  providers: [
+    {
+      provide: ColumnBaseComponent,
+      useExisting: forwardRef(() => CustomColumnSortedComponent),
+    },
+  ],
 })
-export class CustomColumnSortedComponent {
-
+export class CustomColumnSortedComponent extends ColumnBaseComponent {
+  @ContentChild('headerTemplate', { static: true })
+  headerTemplate!: TemplateRef<unknown>;
+  @ContentChild('cellTemplate', { static: true })
+  cellTemplate!: TemplateRef<unknown>;
 }

@@ -1,3 +1,13 @@
 <section class="flex-container main-page-item mt-3">
   <p>home works!</p>
+
+  <horus-client-table
+    id="test"
+    [dataSource]="datasource"
+    [pageSizeOptions]="pageSizeOptions"
+  >
+    <horus-text-column name="id" title="Id"></horus-text-column>
+    <horus-text-column name="name" title="Name"></horus-text-column>
+    <horus-text-column name="surname" title="Surname"></horus-text-column>
+  </horus-client-table>
 </section>
