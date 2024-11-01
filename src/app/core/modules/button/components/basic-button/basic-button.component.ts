@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
-import { BaseButtonComponent } from '../base/base-button.component';
+import { Component, Input } from "@angular/core";
+import { BaseButtonComponent } from "../base/base-button.component";
 
 @Component({
-  selector: 'horus-basic-button',
-  templateUrl: './basic-button.component.html',
+  selector: "horus-basic-button",
+  templateUrl: "./basic-button.component.html"
 })
 export class BasicButtonComponent extends BaseButtonComponent {
   @Input({ required: true }) text!: string;

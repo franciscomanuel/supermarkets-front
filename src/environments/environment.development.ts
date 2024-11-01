@@ -1,11 +1,11 @@
-import { version } from '../../package.json';
+import { version } from "../../package.json";
 
 export const environment = {
   production: false,
   application: {
-    name: 'Supermarkets',
-    version,
+    name: "Supermarkets",
+    version
   },
-  defaultLanguage: 'es',
-  languages: ['es', 'en'],
+  defaultLanguage: "es",
+  languages: ["es", "en"]
 };

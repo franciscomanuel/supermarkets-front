@@ -1,1 +1,1 @@
-export { TableSize } from './table-size.enum';
+export { TableSize } from "./table-size.enum";

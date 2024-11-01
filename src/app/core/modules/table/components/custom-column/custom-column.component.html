@@ -4,11 +4,6 @@
     <ng-container *ngTemplateOutlet="headerTemplate"></ng-container>
   </th>
   <td mat-cell *matCellDef="let row; let i = index; let dataIndex = dataIndex">
-    <ng-container
-      *ngTemplateOutlet="
-        cellTemplate;
-        context: { $implicit: row, i, dataIndex }
-      "
-    ></ng-container>
+    <ng-container *ngTemplateOutlet="cellTemplate; context: { $implicit: row, i, dataIndex }"></ng-container>
   </td>
 </ng-container>

@@ -1,12 +1,12 @@
-import { Routes } from '@angular/router';
+import { Routes } from "@angular/router";
 
 export const routes: Routes = [
   {
-    path: '',
+    path: "",
     loadComponent: () =>
-      import(
-        './routes/supermarket-list-route/supermarket-list-route.component'
-      ).then((c) => c.SupermarketListRouteComponent),
-    children: [],
-  },
+      import("./routes/supermarket-list-route/supermarket-list-route.component").then(
+        c => c.SupermarketListRouteComponent
+      ),
+    children: []
+  }
 ];

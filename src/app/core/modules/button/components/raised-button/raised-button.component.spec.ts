@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { RaisedButtonComponent } from './raised-button.component';
+import { RaisedButtonComponent } from "./raised-button.component";
 
-describe('RaisedButtonComponent', () => {
+describe("RaisedButtonComponent", () => {
   let component: RaisedButtonComponent;
   let fixture: ComponentFixture<RaisedButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RaisedButtonComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RaisedButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

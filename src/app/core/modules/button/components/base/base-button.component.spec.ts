@@ -1,13 +1,13 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BaseButtonComponent } from './base-button.component';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { BaseButtonComponent } from "./base-button.component";
 
-describe('BaseButtonComponent', () => {
+describe("BaseButtonComponent", () => {
   let component: BaseButtonComponent;
   let fixture: ComponentFixture<BaseButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BaseButtonComponent],
+      declarations: [BaseButtonComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(BaseButtonComponent);
@@ -15,7 +15,7 @@ describe('BaseButtonComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

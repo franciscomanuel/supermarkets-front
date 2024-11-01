@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TextColumnSortedComponent } from './text-column-sorted.component';
+import { TextColumnSortedComponent } from "./text-column-sorted.component";
 
-describe('TextColumnSortedComponent', () => {
+describe("TextColumnSortedComponent", () => {
   let component: TextColumnSortedComponent;
   let fixture: ComponentFixture<TextColumnSortedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [TextColumnSortedComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TextColumnSortedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

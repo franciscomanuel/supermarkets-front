@@ -1,6 +1,16 @@
-<button mat-icon-button color="primary">
-  <mat-icon fontIcon="favorite"></mat-icon>
-</button>
-<button mat-icon-button color="primary">
-  <mat-icon fontIcon="shared"></mat-icon>
-</button>
+<horus-button
+  type="basic"
+  icon="arrow_drop_down"
+  [text]="selectedLanguage"
+  [matMenuTriggerFor]="languageMenu"
+></horus-button>
+<mat-menu #languageMenu="matMenu">
+  @for (lang of languages; track lang) {
+    <button mat-menu-item (click)="onLanguageChange(lang)">
+      {{ lang }}
+    </button>
+  }
+</mat-menu>
+
+<horus-button type="icon" color="primary" icon="favorite"></horus-button>
+<horus-button type="icon" color="primary" icon="shared"></horus-button>

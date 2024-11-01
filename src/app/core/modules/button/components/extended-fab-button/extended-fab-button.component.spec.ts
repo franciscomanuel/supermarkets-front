@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ExtendedFabButtonComponent } from './extended-fab-button.component';
+import { ExtendedFabButtonComponent } from "./extended-fab-button.component";
 
-describe('ExtendedFabButtonComponent', () => {
+describe("ExtendedFabButtonComponent", () => {
   let component: ExtendedFabButtonComponent;
   let fixture: ComponentFixture<ExtendedFabButtonComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ExtendedFabButtonComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ExtendedFabButtonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

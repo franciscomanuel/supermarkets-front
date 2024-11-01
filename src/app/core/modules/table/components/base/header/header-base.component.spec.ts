@@ -1,14 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { HeaderBaseComponent } from './header-base.component';
+import { HeaderBaseComponent } from "./header-base.component";
 
-describe('HeaderBaseComponent', () => {
+describe("HeaderBaseComponent", () => {
   let component: HeaderBaseComponent;
   let fixture: ComponentFixture<HeaderBaseComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HeaderBaseComponent],
+      imports: [HeaderBaseComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderBaseComponent);
@@ -16,7 +16,7 @@ describe('HeaderBaseComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

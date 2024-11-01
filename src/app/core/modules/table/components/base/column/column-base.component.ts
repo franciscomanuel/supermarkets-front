@@ -1,12 +1,8 @@
-import { Component, Input, ViewChild } from '@angular/core';
-import {
-  MatCellDef,
-  MatColumnDef,
-  MatHeaderCellDef,
-} from '@angular/material/table';
+import { Component, Input, ViewChild } from "@angular/core";
+import { MatCellDef, MatColumnDef, MatHeaderCellDef } from "@angular/material/table";
 
 @Component({
-  template: '',
+  template: ""
 })
 export class ColumnBaseComponent {
   @Input({ required: true }) name!: string;

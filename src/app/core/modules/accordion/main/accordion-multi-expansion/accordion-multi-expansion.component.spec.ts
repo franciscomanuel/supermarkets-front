@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AccordionMultiExpansionComponent } from './accordion-multi-expansion.component';
+import { AccordionMultiExpansionComponent } from "./accordion-multi-expansion.component";
 
-describe('AccordionMultiExpansionComponent', () => {
+describe("AccordionMultiExpansionComponent", () => {
   let component: AccordionMultiExpansionComponent;
   let fixture: ComponentFixture<AccordionMultiExpansionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AccordionMultiExpansionComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AccordionMultiExpansionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

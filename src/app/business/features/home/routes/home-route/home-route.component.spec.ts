@@ -1,13 +1,13 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HomeRouteComponent } from './home-route.component';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { HomeRouteComponent } from "./home-route.component";
 
-describe('HomeComponent', () => {
+describe("HomeComponent", () => {
   let component: HomeRouteComponent;
   let fixture: ComponentFixture<HomeRouteComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeRouteComponent],
+      imports: [HomeRouteComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomeRouteComponent);
@@ -15,7 +15,7 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

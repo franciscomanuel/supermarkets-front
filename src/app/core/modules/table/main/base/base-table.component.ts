@@ -1,25 +1,13 @@
-import {
-  AfterContentInit,
-  Component,
-  ContentChildren,
-  Input,
-  QueryList,
-  ViewChild,
-} from '@angular/core';
-import { PAGE_SIZE_OPTIONS } from '../../constants/table.constants';
-import { TableSize } from '../../enums';
-import {
-  MatColumnDef,
-  MatHeaderRowDef,
-  MatRowDef,
-  MatTable,
-} from '@angular/material/table';
-import { ColumnBaseComponent } from '../../components/base/column/column-base.component';
-import { HeaderBaseComponent } from '../../components/base/header/header-base.component';
-import { MatPaginator } from '@angular/material/paginator';
+import { AfterContentInit, Component, ContentChildren, Input, QueryList, ViewChild } from "@angular/core";
+import { PAGE_SIZE_OPTIONS } from "../../constants/table.constants";
+import { TableSize } from "../../enums";
+import { MatColumnDef, MatHeaderRowDef, MatRowDef, MatTable } from "@angular/material/table";
+import { ColumnBaseComponent } from "../../components/base/column/column-base.component";
+import { HeaderBaseComponent } from "../../components/base/header/header-base.component";
+import { MatPaginator } from "@angular/material/paginator";
 
 @Component({
-  template: '',
+  template: ""
 })
 export class BaseTableComponent<T> implements AfterContentInit {
   @Input({ required: true }) id!: string;
@@ -57,7 +45,7 @@ export class BaseTableComponent<T> implements AfterContentInit {
     });
 
     this.columnsBase.forEach((columnRowDef: ColumnBaseComponent) => {
-      if (columnRowDef.name !== 'expandedDetail') {
+      if (columnRowDef.name !== "expandedDetail") {
         this.columns.push(columnRowDef.name);
       }
       columnRowDef.matColumnDef.name = columnRowDef.name;

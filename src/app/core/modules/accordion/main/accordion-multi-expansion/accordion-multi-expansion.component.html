@@ -1,22 +1,8 @@
-<mat-accordion
-  [multi]="multi"
-  [hideToggle]="hideToggle"
-  [togglePosition]="togglePosition"
->
+<mat-accordion [multi]="multi" [hideToggle]="hideToggle" [togglePosition]="togglePosition">
   <ng-content></ng-content>
 
   <mat-action-row>
-    <horus-button
-      type="raised"
-      color="primary"
-      text="Previous"
-      (click)="onPrevStep()"
-    ></horus-button>
-    <horus-button
-      type="raised"
-      color="warn"
-      text="Next"
-      (click)="onNextStep()"
-    ></horus-button>
+    <horus-button type="raised" color="primary" text="Previous" (click)="onPrevStep()"></horus-button>
+    <horus-button type="raised" color="warn" text="Next" (click)="onNextStep()"></horus-button>
   </mat-action-row>
 </mat-accordion>

@@ -1,10 +1,10 @@
-import { Component, Input } from '@angular/core';
-import { MatAccordionTogglePosition } from '@angular/material/expansion';
+import { Component, Input } from "@angular/core";
+import { MatAccordionTogglePosition } from "@angular/material/expansion";
 
 @Component({
-  selector: 'horus-basic-accordion',
-  templateUrl: './basic-accordion.component.html',
-  styleUrl: './basic-accordion.component.sass',
+  selector: "horus-basic-accordion",
+  templateUrl: "./basic-accordion.component.html",
+  styleUrl: "./basic-accordion.component.sass"
 })
 export class BasicAccordionComponent {
   @Input() multi = false;
@@ -14,5 +14,5 @@ export class BasicAccordionComponent {
   @Input() title!: string;
   @Input() description!: string;
   @Input() icon!: string;
-  @Input() togglePosition: MatAccordionTogglePosition = 'after';
+  @Input() togglePosition: MatAccordionTogglePosition = "after";
 }

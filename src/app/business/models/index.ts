@@ -1,1 +1,1 @@
-export type { MenuSinenav } from './menu-sinenav.interface';
+export type { MenuSinenav } from "./menu-sinenav.interface";

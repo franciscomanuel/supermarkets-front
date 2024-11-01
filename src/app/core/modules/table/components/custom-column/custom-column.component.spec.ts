@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { CustomColumnComponent } from './custom-column.component';
+import { CustomColumnComponent } from "./custom-column.component";
 
-describe('CustomColumnComponent', () => {
+describe("CustomColumnComponent", () => {
   let component: CustomColumnComponent;
   let fixture: ComponentFixture<CustomColumnComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CustomColumnComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CustomColumnComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

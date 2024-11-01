@@ -1,30 +1,17 @@
 <section class="flex-container main-page-item mt-3">
   <p>home works!</p>
 
-  <horus-client-table
-    id="test"
-    [dataSource]="datasource"
-    [pageSizeOptions]="pageSizeOptions"
-  >
+  <horus-client-table id="test" [dataSource]="datasource" [pageSizeOptions]="pageSizeOptions">
     <horus-text-column name="id" title="Id"></horus-text-column>
     <horus-text-column name="name" title="Name"></horus-text-column>
     <horus-text-column name="surname" title="Surname"></horus-text-column>
   </horus-client-table>
 
-  <horus-basic-accordion
-    class="mt-4"
-    title="Title"
-    description="description"
-    icon="add"
-    [expanded]="true"
-  >
+  <horus-basic-accordion class="mt-4" title="Title" description="description" icon="add" [expanded]="true">
     <div>Hola mundo</div>
   </horus-basic-accordion>
 
-  <horus-accordion-multi-expansion
-    (prevStep)="prevStep()"
-    (nextStep)="nextStep()"
-  >
+  <horus-accordion-multi-expansion (prevStep)="prevStep()" (nextStep)="nextStep()">
     <horus-expansion-panel
       title="Expansion 1"
       description="Description 1"
@@ -52,16 +39,5 @@
     >
   </horus-accordion-multi-expansion>
 </section>
-
-<horus-button
-  type="stroked"
-  text="English"
-  (click)="translateText('en')"
-></horus-button>
-<horus-button
-  type="stroked"
-  text="Español"
-  (click)="translateText('es')"
-></horus-button>
 
 <div>{{ "test" | translate }}</div>

@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ClientTableComponent } from './client-table.component';
+import { ClientTableComponent } from "./client-table.component";
 
-describe('ClientTableComponent', () => {
+describe("ClientTableComponent", () => {
   let component: ClientTableComponent;
   let fixture: ComponentFixture<ClientTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ClientTableComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ClientTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

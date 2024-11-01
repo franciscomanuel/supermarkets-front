@@ -2,23 +2,14 @@
   <mat-sidenav #sidenav mode="side" opened="true" class="sidenav">
     <mat-nav-list>
       @for (option of menuSidenav; track option.title) {
-      <mat-list-item
-        [routerLink]="option.link"
-        routerLinkActive="active"
-        class="sidenav-hover"
-      >
-        <span class="flex">
-          <mat-icon
-            mat-list-icon
-            class="pe-2"
-            color="primary"
-            [fontIcon]="option.icon"
-          ></mat-icon>
-          @if (applicationService.getExpanded()) {
-          <span class="pl-2" @toggleText>{{ option.title }}</span>
-          }
-        </span>
-      </mat-list-item>
+        <mat-list-item [routerLink]="option.link" routerLinkActive="active" class="sidenav-hover">
+          <span class="flex">
+            <mat-icon mat-list-icon class="pe-2" color="primary" [fontIcon]="option.icon"></mat-icon>
+            @if (applicationService.getExpanded()) {
+              <span class="pl-2" @toggleText>{{ option.title }}</span>
+            }
+          </span>
+        </mat-list-item>
       }
     </mat-nav-list>
   </mat-sidenav>

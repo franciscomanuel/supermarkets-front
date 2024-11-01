@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { MainContentRouteComponent } from './main-content-route.component';
+import { MainContentRouteComponent } from "./main-content-route.component";
 
-describe('MainContentRouteComponent', () => {
+describe("MainContentRouteComponent", () => {
   let component: MainContentRouteComponent;
   let fixture: ComponentFixture<MainContentRouteComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [MainContentRouteComponent]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MainContentRouteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
