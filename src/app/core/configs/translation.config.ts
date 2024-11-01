@@ -1,15 +1,14 @@
 import { TranslateService } from '@ngx-translate/core';
+import { environment } from '../../../environments/environment';
 
 export function initializeTranslations(
   translateService: TranslateService
 ): () => Promise<void> {
   return () =>
     new Promise<void>((resolve) => {
-      const defaultLang = 'es';
+      const defaultLang = environment.defaultLanguage;
 
-      console.log('defaultLanguage: ', defaultLang);
-
-      translateService.addLangs(['es', 'en']);
+      translateService.addLangs(environment.languages);
       translateService.setDefaultLang(defaultLang);
       translateService.use(defaultLang).subscribe(() => {
         resolve();
