@@ -52,3 +52,16 @@
     >
   </horus-accordion-multi-expansion>
 </section>
+
+<horus-button
+  type="stroked"
+  text="English"
+  (click)="translateText('en')"
+></horus-button>
+<horus-button
+  type="stroked"
+  text="Español"
+  (click)="translateText('es')"
+></horus-button>
+
+<div>{{ "test" | translate }}</div>

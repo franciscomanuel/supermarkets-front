@@ -1,9 +1,10 @@
-import { Component, HostBinding, OnInit, signal } from '@angular/core';
+import { Component, HostBinding, inject, OnInit, signal } from '@angular/core';
 import { ButtonModule } from '../../../../../core/modules/button/button.module';
 import { TableModule } from '../../../../../core/modules/table/table.module';
 import { PAGE_SIZE_OPTIONS } from '../../../../../core/modules/table/constants/table.constants';
 import { MatTableDataSource } from '@angular/material/table';
 import { AccordionModule } from '../../../../../core/modules/accordion/accordion.module';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 interface DataSource {
   id: number;
@@ -13,12 +14,14 @@ interface DataSource {
 @Component({
   selector: 'horus-home-route',
   standalone: true,
-  imports: [ButtonModule, TableModule, AccordionModule],
+  imports: [ButtonModule, TableModule, AccordionModule, TranslateModule],
   templateUrl: './home-route.component.html',
   styleUrl: './home-route.component.sass',
 })
 export class HomeRouteComponent implements OnInit {
   @HostBinding('class') className = 'flex-container main-page-content';
+
+  translate: TranslateService = inject(TranslateService);
 
   readonly pageSizeOptions = PAGE_SIZE_OPTIONS;
   datasource: MatTableDataSource<DataSource> = new MatTableDataSource();
@@ -74,5 +77,9 @@ export class HomeRouteComponent implements OnInit {
 
   prevStep() {
     this.step.update((i: number) => i - 1);
+  }
+
+  translateText(lang: string): void {
+    this.translate.use(lang);
   }
 }

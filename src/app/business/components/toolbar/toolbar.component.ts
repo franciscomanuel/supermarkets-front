@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ApplicationService } from '../../services/application/application.service';
 import { HeaderComponent } from '../header/header.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -22,10 +22,10 @@ import { RouterLink } from '@angular/router';
 export class ToolbarComponent {
   expanded: boolean = true;
 
-  constructor(private readonly application: ApplicationService) {}
+  readonly applicationService: ApplicationService = inject(ApplicationService);
 
   openClose(): void {
     this.expanded = !this.expanded;
-    this.application.setExpanded(this.expanded);
+    this.applicationService.setExpanded(this.expanded);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -57,7 +57,7 @@ import {
 export class SidenavComponent {
   @HostBinding('class') clasName = 'flex-container';
 
-  readonly menuSidenav = MENU_SIDENAV;
+  readonly applicationService: ApplicationService = inject(ApplicationService);
 
-  constructor(public readonly applicationService: ApplicationService) {}
+  readonly menuSidenav = MENU_SIDENAV;
 }
