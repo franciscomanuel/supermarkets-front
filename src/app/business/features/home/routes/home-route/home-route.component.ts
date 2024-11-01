@@ -69,10 +69,10 @@ export class HomeRouteComponent implements OnInit {
   }
 
   nextStep() {
-    this.step.update((i) => i + 1);
+    this.step.update((i: number) => i + 1);
   }
 
   prevStep() {
-    this.step.update((i) => i - 1);
+    this.step.update((i: number) => i - 1);
   }
 }

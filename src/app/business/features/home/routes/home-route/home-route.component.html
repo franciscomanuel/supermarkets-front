@@ -11,7 +11,7 @@
     <horus-text-column name="surname" title="Surname"></horus-text-column>
   </horus-client-table>
 
-  <horus-accordion-2
+  <horus-basic-accordion
     class="mt-4"
     title="Title"
     description="description"
@@ -19,29 +19,36 @@
     [expanded]="true"
   >
     <div>Hola mundo</div>
-  </horus-accordion-2>
+  </horus-basic-accordion>
 
-  <horus-accordion (prevStep)="prevStep()" (nextStep)="nextStep()">
+  <horus-accordion-multi-expansion
+    (prevStep)="prevStep()"
+    (nextStep)="nextStep()"
+  >
     <horus-expansion-panel
       title="Expansion 1"
       description="Description 1"
       icon="add"
       [expanded]="step() === 0"
       (opened)="setStep(0)"
-    ></horus-expansion-panel>
+    >
+      <div>AAA</div>
+    </horus-expansion-panel>
     <horus-expansion-panel
       title="Expansion 2"
       description="Description 2"
       icon="add"
       [expanded]="step() === 1"
       (opened)="setStep(1)"
-    ></horus-expansion-panel>
+      ><div>BBB</div></horus-expansion-panel
+    >
     <horus-expansion-panel
       title="Expansion 3"
       description="Description 3"
       icon="add"
-      [expanded]="step() === 3"
-      (opened)="setStep(3)"
-    ></horus-expansion-panel>
-  </horus-accordion>
+      [expanded]="step() === 2"
+      (opened)="setStep(2)"
+      ><div>CCC</div></horus-expansion-panel
+    >
+  </horus-accordion-multi-expansion>
 </section>
