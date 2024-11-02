@@ -6,9 +6,10 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { SelectBaseComponent } from "./components/select-base/select-base.component";
 
 @NgModule({
-  declarations: [SelectComponent, SelectWithTriggerComponent],
+  declarations: [SelectComponent, SelectWithTriggerComponent, SelectBaseComponent],
   imports: [CommonModule, MatSelectModule, MatFormFieldModule, FormsModule, ReactiveFormsModule, MatInputModule],
   exports: [SelectComponent, SelectWithTriggerComponent]
 })
