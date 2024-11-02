@@ -5,6 +5,9 @@ import { PAGE_SIZE_OPTIONS } from "../../../../../core/modules/table/constants/t
 import { MatTableDataSource } from "@angular/material/table";
 import { AccordionModule } from "../../../../../core/modules/accordion/accordion.module";
 import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { KeyValue } from "@angular/common";
+import { SelectModule } from "../../../../../core/modules/select/select.module";
 
 interface DataSource {
   id: number;
@@ -14,7 +17,7 @@ interface DataSource {
 @Component({
   selector: "horus-home-route",
   standalone: true,
-  imports: [ButtonModule, TableModule, AccordionModule, TranslateModule],
+  imports: [ButtonModule, TableModule, AccordionModule, TranslateModule, SelectModule],
   templateUrl: "./home-route.component.html",
   styleUrl: "./home-route.component.sass"
 })
@@ -24,8 +27,52 @@ export class HomeRouteComponent implements OnInit {
   readonly pageSizeOptions = PAGE_SIZE_OPTIONS;
   datasource: MatTableDataSource<DataSource> = new MatTableDataSource();
   step = signal(0);
+  form!: FormGroup;
+  animals: KeyValue<number, string>[] = [];
+
+  get animalControl(): FormControl<number | string> {
+    return this.form.get("animals") as FormControl<number | string>;
+  }
+
+  get animalControl2(): FormControl<string[]> {
+    return this.form.get("animals2") as FormControl<string[]>;
+  }
 
   ngOnInit(): void {
+    this.initAnimals();
+    this.createForm();
+    this.initDataSource();
+  }
+
+  onClickButton(): void {
+    console.log("form: ", this.form);
+  }
+
+  private createForm(): void {
+    this.form = new FormGroup({
+      animals: new FormControl(null, Validators.required),
+      animals2: new FormControl(null, Validators.required)
+    });
+  }
+
+  private initAnimals(): void {
+    this.animals = [
+      {
+        key: 1,
+        value: "Tigre"
+      },
+      {
+        key: 2,
+        value: "Leon con texto muy muy muy muy muy muy largo"
+      },
+      {
+        key: 3,
+        value: "Gato"
+      }
+    ];
+  }
+
+  private initDataSource(): void {
     this.datasource.data = [
       {
         id: 1,

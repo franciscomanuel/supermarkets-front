@@ -38,6 +38,24 @@
       ><div>CCC</div></horus-expansion-panel
     >
   </horus-accordion-multi-expansion>
+
+  <horus-select
+    [formControl]="animalControl"
+    label="Animals"
+    [options]="animals"
+    [multiple]="false"
+    [hideSingleSelectionIndicator]="false"
+    [panelWidth]="300"
+    placeholder="Esto es un placeholder"
+  ></horus-select>
+
+  <horus-select-with-trigger
+    [formControl]="animalControl2"
+    label="Animals"
+    [options]="animals"
+  ></horus-select-with-trigger>
+
+  <horus-button text="Click me" type="raised" (click)="onClickButton()" />
 </section>
 
 <div>{{ "test" | translate }}</div>
