@@ -8,6 +8,7 @@ import { TranslateModule, TranslateService } from "@ngx-translate/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { KeyValue } from "@angular/common";
 import { SelectModule } from "../../../../../core/modules/select/select.module";
+import { InputModule } from "../../../../../core/modules/input/input.module";
 
 interface DataSource {
   id: number;
@@ -17,7 +18,7 @@ interface DataSource {
 @Component({
   selector: "horus-home-route",
   standalone: true,
-  imports: [ButtonModule, TableModule, AccordionModule, TranslateModule, SelectModule],
+  imports: [ButtonModule, TableModule, AccordionModule, TranslateModule, SelectModule, InputModule],
   templateUrl: "./home-route.component.html",
   styleUrl: "./home-route.component.sass"
 })
@@ -38,6 +39,14 @@ export class HomeRouteComponent implements OnInit {
     return this.form.get("animals2") as FormControl<string[]>;
   }
 
+  get inputControl(): FormControl<string> {
+    return this.form.get("valueInput") as FormControl<string>;
+  }
+
+  get inputControl2(): FormControl<string> {
+    return this.form.get("valueInput2") as FormControl<string>;
+  }
+
   ngOnInit(): void {
     this.initAnimals();
     this.createForm();
@@ -51,7 +60,9 @@ export class HomeRouteComponent implements OnInit {
   private createForm(): void {
     this.form = new FormGroup({
       animals: new FormControl(null, Validators.required),
-      animals2: new FormControl(null, Validators.required)
+      animals2: new FormControl(null, Validators.required),
+      valueInput: new FormControl("", [Validators.required, Validators.maxLength(2)]),
+      valueInput2: new FormControl("", Validators.required)
     });
   }
 

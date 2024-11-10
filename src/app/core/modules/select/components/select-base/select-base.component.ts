@@ -1,7 +1,7 @@
 import { KeyValue } from "@angular/common";
 import { Component, Input } from "@angular/core";
 import { FormControl } from "@angular/forms";
-import { SelectErrorStateMatcher } from "../../utils/error-state-matcher.model";
+import { FormControlErrorStateMatcher } from "../../../../utils/form-control-error-state-matcher";
 
 @Component({
   template: ""
@@ -19,5 +19,5 @@ export class SelectBaseComponent<T> {
   @Input() panelWidth: string | number | null = null;
   @Input() placeholder!: string;
 
-  matcher = new SelectErrorStateMatcher();
+  matcher = new FormControlErrorStateMatcher();
 }

@@ -56,6 +56,31 @@
   ></horus-select-with-trigger>
 
   <horus-button text="Click me" type="raised" (click)="onClickButton()" />
+
+  <horus-input
+    [formControl]="inputControl"
+    label="Test label"
+    placeholder="Placehoder test"
+    textPrefix="+1"
+    iconPrefix="delete"
+    textSuffix="+2"
+    iconSuffix="add"
+    textHint="Mensaje prueba"
+  ></horus-input>
+
+  <horus-input
+    [formControl]="inputControl2"
+    label="Test label 2"
+    placeholder="Placehoder test"
+    type="number"
+  ></horus-input>
+
+  <horus-input
+    [formControl]="inputControl2"
+    label="Test label 2"
+    placeholder="Placehoder test"
+    type="textArea"
+  ></horus-input>
 </section>
 
 <div>{{ "test" | translate }}</div>

@@ -1,0 +1,86 @@
+<mat-form-field [appearance]="appearance">
+  <mat-label>{{ label }}</mat-label>
+
+  @if (!!textPrefix) {
+    <span matTextPrefix>{{ textPrefix }} &nbsp;</span>
+  }
+  @if (!!iconPrefix) {
+    <mat-icon matPrefix [fontIcon]="iconPrefix"></mat-icon>
+  }
+
+  @switch (type) {
+    @case ("number") {
+      <input
+        matInput
+        type="number"
+        [formControl]="formControl"
+        [max]="max"
+        [min]="min"
+        [placeholder]="placeholder"
+        [errorStateMatcher]="matcher"
+      />
+    }
+    @case ("textArea") {
+      <textarea
+        matInput
+        [formControl]="formControl"
+        [placeholder]="placeholder"
+        [rows]="rows"
+        [minLength]="minLength"
+        [maxLength]="maxLength"
+        [errorStateMatcher]="matcher"
+      ></textarea>
+    }
+    @default {
+      <input
+        matInput
+        [formControl]="formControl"
+        [type]="type"
+        [placeholder]="placeholder"
+        [maxLength]="maxLength"
+        [minLength]="minLength"
+        [errorStateMatcher]="matcher"
+      />
+    }
+  }
+
+  @if (!!textSuffix) {
+    <span matTextSuffix>{{ textSuffix }}</span>
+  }
+  @if (!!iconSuffix) {
+    <mat-icon matSuffix [fontIcon]="iconSuffix"></mat-icon>
+  }
+  @if (!!textHint) {
+    <mat-hint
+      ><strong>{{ textHint }}</strong>
+    </mat-hint>
+  }
+
+  @if (!!formControl.errors) {
+    <mat-error>
+      @switch (true) {
+        @case (formControl.hasError("required")) {
+          Field is <strong>required</strong>
+        }
+        @case (formControl.hasError("maxlength")) {
+          MaxLength: <strong>{{ formControl.errors["maxlength"].requiredLength }}</strong>
+        }
+        @case (formControl.hasError("minlength")) {
+          MinLength: <strong>{{ formControl.errors["minlength"].requiredLength }}</strong>
+        }
+        @case (formControl.hasError("max")) {
+          Max value: <strong>{{ formControl.errors["max"].max }}</strong>
+        }
+        @case (formControl.hasError("min")) {
+          Min value: <strong>{{ formControl.errors["min"].min }}</strong>
+        }
+        @case (formControl.hasError("pattern")) {
+          Invalid value. Pattern: <strong>{{ formControl.errors["pattern"].requiredPattern }}</strong>
+        }
+        @default {
+          Invalid value. Message: <strong>{{ formControl.errors["message"] }}</strong>
+        }
+      }
+    </mat-error>
+  }
+</mat-form-field>
