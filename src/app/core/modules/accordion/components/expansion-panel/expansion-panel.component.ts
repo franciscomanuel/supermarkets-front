@@ -1,9 +1,10 @@
 import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: "horus-expansion-panel",
-  templateUrl: "./expansion-panel.component.html",
-  styleUrl: "./expansion-panel.component.sass"
+    selector: "horus-expansion-panel",
+    templateUrl: "./expansion-panel.component.html",
+    styleUrl: "./expansion-panel.component.sass",
+    standalone: false
 })
 export class ExpansionPanelComponent {
   @Input() disabled = false;

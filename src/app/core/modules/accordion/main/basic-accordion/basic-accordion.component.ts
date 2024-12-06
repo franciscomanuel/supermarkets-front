@@ -2,9 +2,10 @@ import { Component, Input } from "@angular/core";
 import { MatAccordionTogglePosition } from "@angular/material/expansion";
 
 @Component({
-  selector: "horus-basic-accordion",
-  templateUrl: "./basic-accordion.component.html",
-  styleUrl: "./basic-accordion.component.sass"
+    selector: "horus-basic-accordion",
+    templateUrl: "./basic-accordion.component.html",
+    styleUrl: "./basic-accordion.component.sass",
+    standalone: false
 })
 export class BasicAccordionComponent {
   @Input() multi = false;

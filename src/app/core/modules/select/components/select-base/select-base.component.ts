@@ -4,7 +4,8 @@ import { FormControl } from "@angular/forms";
 import { FormControlErrorStateMatcher } from "../../../../utils/form-control-error-state-matcher";
 
 @Component({
-  template: ""
+    template: "",
+    standalone: false
 })
 export class SelectBaseComponent<T> {
   @Input({ required: true }) formControl!: FormControl<T | null>;

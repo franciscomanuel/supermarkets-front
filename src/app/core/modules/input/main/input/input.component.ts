@@ -11,9 +11,10 @@ const MIN_DEFAULT = 0;
 const NUMBER_ROWS_DEFAULT = 1;
 
 @Component({
-  selector: "horus-input",
-  templateUrl: "./input.component.html",
-  styleUrl: "./input.component.sass"
+    selector: "horus-input",
+    templateUrl: "./input.component.html",
+    styleUrl: "./input.component.sass",
+    standalone: false
 })
 export class InputComponent<T> {
   @Input({ required: true }) formControl!: FormControl<T | null>;

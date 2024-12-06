@@ -16,11 +16,10 @@ interface DataSource {
   surname: string;
 }
 @Component({
-  selector: "horus-home-route",
-  standalone: true,
-  imports: [ButtonModule, TableModule, AccordionModule, TranslateModule, SelectModule, InputModule],
-  templateUrl: "./home-route.component.html",
-  styleUrl: "./home-route.component.sass"
+    selector: "horus-home-route",
+    imports: [ButtonModule, TableModule, AccordionModule, TranslateModule, SelectModule, InputModule],
+    templateUrl: "./home-route.component.html",
+    styleUrl: "./home-route.component.sass"
 })
 export class HomeRouteComponent implements OnInit {
   @HostBinding("class") className = "flex-container main-page-content";

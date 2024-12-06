@@ -3,9 +3,10 @@ import { Component } from "@angular/core";
 import { SelectBaseComponent } from "../../components/select-base/select-base.component";
 
 @Component({
-  selector: "horus-select-with-trigger",
-  templateUrl: "./select-with-trigger.component.html",
-  styleUrl: "./select-with-trigger.component.sass"
+    selector: "horus-select-with-trigger",
+    templateUrl: "./select-with-trigger.component.html",
+    styleUrl: "./select-with-trigger.component.sass",
+    standalone: false
 })
 export class SelectWithTriggerComponent extends SelectBaseComponent<string[] | number[]> {
   getFirstSelectedValue(): string {

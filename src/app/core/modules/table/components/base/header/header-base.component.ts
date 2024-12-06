@@ -2,7 +2,8 @@ import { Component, Input, ViewChild } from "@angular/core";
 import { MatColumnDef, MatHeaderCellDef } from "@angular/material/table";
 
 @Component({
-  template: ""
+    template: "",
+    standalone: false
 })
 export class HeaderBaseComponent {
   @Input({ required: true }) name!: string;

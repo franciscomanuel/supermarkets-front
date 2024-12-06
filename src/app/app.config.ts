@@ -1,16 +1,16 @@
-import { APP_INITIALIZER, ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from "@angular/core";
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  provideZoneChangeDetection,
+  inject,
+  provideAppInitializer
+} from "@angular/core";
 import { provideRouter, withComponentInputBinding, withViewTransitions } from "@angular/router";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
 import { routes } from "./app.routes";
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
-import {
-  HttpClient,
-  provideHttpClient,
-  withFetch,
-  withInterceptors,
-  withInterceptorsFromDi
-} from "@angular/common/http";
+import { HttpClient, provideHttpClient, withFetch, withInterceptorsFromDi } from "@angular/common/http";
 import { provideClientHydration, withHttpTransferCacheOptions } from "@angular/platform-browser";
 import { TranslateLoader, TranslateModule, TranslateService } from "@ngx-translate/core";
 import { initializeTranslations } from "./core/configs/translation.config";
@@ -29,7 +29,6 @@ export const appConfig: ApplicationConfig = {
       withHttpTransferCacheOptions({ includePostRequests: true }) // Cachea las peticiones post para mejorar el rendimiento de la aplicación
     ),
     provideAnimationsAsync(),
-    provideAnimationsAsync(),
     importProvidersFrom([
       TranslateModule.forRoot({
         loader: {
@@ -41,11 +40,9 @@ export const appConfig: ApplicationConfig = {
       })
     ]),
     provideHttpClient(withInterceptorsFromDi()),
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeTranslations,
-      deps: [TranslateService],
-      multi: true
-    }
+    provideAppInitializer(() => {
+      const initializerFn = initializeTranslations(inject(TranslateService));
+      return initializerFn();
+    })
   ]
 };
