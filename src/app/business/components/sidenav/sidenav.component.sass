@@ -1,6 +1,6 @@
 
 @use "@angular/material" as mat
-@import "./../../../../styles/_theme.scss"
+@use "../../../../styles/_theme.scss"
 
 .sidenav
   width: fit-content !important
@@ -10,6 +10,5 @@
   border-radius: 0 !important
 
 .sidenav-hover
-  &:hover,
   &:focus
-    background-color: mat.get-theme-color($light-theme, primary, 900) !important
+    background-color: mat.get-theme-color(theme.$light-theme, primary) !important

@@ -1,9 +1,9 @@
 @if (!!link) {
-  <a mat-fab target="_blank" [color]="color" [disabled]="disabled" [matTooltip]="tooltip" [href]="link">
+  <a mat-fab target="_blank" [disabled]="disabled" [matTooltip]="tooltip" [href]="link">
     <mat-icon [fontIcon]="icon"></mat-icon>
   </a>
 } @else {
-  <button mat-fab [color]="color" [disabled]="disabled" [matTooltip]="tooltip">
+  <button mat-fab [disabled]="disabled" [matTooltip]="tooltip">
     <mat-icon [fontIcon]="icon"></mat-icon>
   </button>
 }

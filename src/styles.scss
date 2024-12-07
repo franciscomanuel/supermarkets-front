@@ -1,5 +1,5 @@
 @use "@angular/material" as mat;
-@import "./styles/theme";
+@use "styles/theme";
 
 @tailwind base;
 @tailwind components;
@@ -8,6 +8,7 @@
 html {
   height: 100%;
 }
+
 body {
   display: flex;
   flex-direction: column;
@@ -52,5 +53,5 @@ body {
 }
 
 .toolbar {
-  background-color: mat.get-theme-color($light-theme, primary, 900) !important;
+  background-color: mat.get-theme-color(theme.$light-theme, primary, 30) !important;
 }

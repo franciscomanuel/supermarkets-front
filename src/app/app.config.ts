@@ -23,7 +23,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     // provideHttpClient(withFetch(), withInterceptors([ErrorResponseInterceptor])),
     provideHttpClient(withFetch()),
-    provideRouter(routes, withComponentInputBinding(), withViewTransitions()),
+    provideRouter(routes, withComponentInputBinding(), withViewTransitions({ skipInitialTransition: true })),
     provideAnimationsAsync(),
     provideClientHydration(
       withHttpTransferCacheOptions({ includePostRequests: true }) // Cachea las peticiones post para mejorar el rendimiento de la aplicación

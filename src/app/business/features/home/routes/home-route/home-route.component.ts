@@ -4,11 +4,12 @@ import { TableModule } from "../../../../../core/modules/table/table.module";
 import { PAGE_SIZE_OPTIONS } from "../../../../../core/modules/table/constants/table.constants";
 import { MatTableDataSource } from "@angular/material/table";
 import { AccordionModule } from "../../../../../core/modules/accordion/accordion.module";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { TranslateModule } from "@ngx-translate/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { KeyValue } from "@angular/common";
 import { SelectModule } from "../../../../../core/modules/select/select.module";
 import { InputModule } from "../../../../../core/modules/input/input.module";
+import { MatIconModule } from "@angular/material/icon";
 
 interface DataSource {
   id: number;
@@ -16,10 +17,10 @@ interface DataSource {
   surname: string;
 }
 @Component({
-    selector: "horus-home-route",
-    imports: [ButtonModule, TableModule, AccordionModule, TranslateModule, SelectModule, InputModule],
-    templateUrl: "./home-route.component.html",
-    styleUrl: "./home-route.component.sass"
+  selector: "horus-home-route",
+  imports: [ButtonModule, TableModule, AccordionModule, TranslateModule, SelectModule, InputModule, MatIconModule],
+  templateUrl: "./home-route.component.html",
+  styleUrl: "./home-route.component.sass"
 })
 export class HomeRouteComponent implements OnInit {
   @HostBinding("class") className = "flex-container main-page-content";
