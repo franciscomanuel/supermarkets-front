@@ -2,9 +2,10 @@ import { Component, Input } from "@angular/core";
 import { SelectBaseComponent } from "../../components/select-base/select-base.component";
 
 @Component({
-  selector: "horus-select",
-  templateUrl: "./select.component.html",
-  styleUrl: "./select.component.sass"
+    selector: "horus-select",
+    templateUrl: "./select.component.html",
+    styleUrl: "./select.component.sass",
+    standalone: false
 })
 export class SelectComponent extends SelectBaseComponent<string | number> {
   @Input() multiple = false;

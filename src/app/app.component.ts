@@ -4,10 +4,9 @@ import { RouterOutlet } from "@angular/router";
 import { TranslateModule } from "@ngx-translate/core";
 
 @Component({
-  selector: "horus-root",
-  standalone: true,
-  imports: [RouterOutlet, CommonModule, TranslateModule],
-  templateUrl: "./app.component.html",
-  styleUrl: "./app.component.sass"
+    selector: "horus-root",
+    imports: [RouterOutlet, CommonModule, TranslateModule],
+    templateUrl: "./app.component.html",
+    styleUrl: "./app.component.sass"
 })
 export class AppComponent {}

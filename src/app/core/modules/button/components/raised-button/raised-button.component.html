@@ -1,12 +1,12 @@
 @if (!!link) {
-  <a mat-raised-button target="_blank" [color]="color" [disabled]="disabled" [matTooltip]="tooltip" [href]="link">
+  <a mat-raised-button target="_blank" [disabled]="disabled" [matTooltip]="tooltip" [href]="link">
     @if (!!icon) {
       <mat-icon [fontIcon]="icon"></mat-icon>
     }
     {{ text }}
   </a>
 } @else {
-  <button mat-raised-button [color]="color" [disabled]="disabled" [matTooltip]="tooltip">
+  <button mat-raised-button [disabled]="disabled" [matTooltip]="tooltip">
     @if (!!icon) {
       <mat-icon [fontIcon]="icon"></mat-icon>
     }

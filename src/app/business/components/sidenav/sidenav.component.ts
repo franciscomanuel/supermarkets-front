@@ -4,15 +4,21 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { MENU_SIDENAV } from "../../constants/main-content-route.constants";
-import { RouterLink, RouterOutlet } from "@angular/router";
-import { JsonPipe } from "@angular/common";
+import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
 import { ApplicationService } from "../../services/application/application.service";
 import { animate, keyframes, style, transition, trigger } from "@angular/animations";
 
 @Component({
   selector: "horus-sidenav",
-  standalone: true,
-  imports: [MatSidenavModule, MatListModule, MatButtonModule, MatIconModule, RouterOutlet, RouterLink, JsonPipe],
+  imports: [
+    MatSidenavModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule,
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive
+  ],
   templateUrl: "./sidenav.component.html",
   styleUrl: "./sidenav.component.sass",
   animations: [

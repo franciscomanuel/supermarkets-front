@@ -7,11 +7,10 @@ import { environment } from "../../../../environments/environment";
 import { TranslateService } from "@ngx-translate/core";
 
 @Component({
-  selector: "horus-header",
-  standalone: true,
-  imports: [MatIconModule, MatButtonModule, MatMenuModule, ButtonModule],
-  templateUrl: "./header.component.html",
-  styleUrl: "./header.component.sass"
+    selector: "horus-header",
+    imports: [MatIconModule, MatButtonModule, MatMenuModule, ButtonModule],
+    templateUrl: "./header.component.html",
+    styleUrl: "./header.component.sass"
 })
 export class HeaderComponent {
   @HostBinding("class") className = "flex justify-center items-center";

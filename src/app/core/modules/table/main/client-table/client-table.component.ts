@@ -3,9 +3,10 @@ import { BaseTableComponent } from "../base/base-table.component";
 import { MatTableDataSource } from "@angular/material/table";
 
 @Component({
-  selector: "horus-client-table",
-  templateUrl: "../base/table-base.component.html",
-  styleUrl: "../base/base.table.component.sass"
+    selector: "horus-client-table",
+    templateUrl: "../base/table-base.component.html",
+    styleUrl: "../base/base.table.component.sass",
+    standalone: false
 })
 export class ClientTableComponent<T> extends BaseTableComponent<T> {
   private _auxiliaryDataSource!: MatTableDataSource<T>;

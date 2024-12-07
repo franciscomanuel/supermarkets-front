@@ -5,9 +5,10 @@ import { Subject, takeUntil } from "rxjs";
 import { PageEvent } from "@angular/material/paginator";
 
 @Component({
-  selector: "horus-server-table",
-  templateUrl: "../base/table-base.component.html",
-  styleUrl: "../base/base.table.component.sass"
+    selector: "horus-server-table",
+    templateUrl: "../base/table-base.component.html",
+    styleUrl: "../base/base.table.component.sass",
+    standalone: false
 })
 export class ServerTableComponent<T> extends BaseTableComponent<T> implements OnInit, OnDestroy {
   private readonly unsubscribeSubject$ = new Subject<void>();

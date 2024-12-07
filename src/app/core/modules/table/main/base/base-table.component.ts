@@ -7,7 +7,8 @@ import { HeaderBaseComponent } from "../../components/base/header/header-base.co
 import { MatPaginator } from "@angular/material/paginator";
 
 @Component({
-  template: ""
+    template: "",
+    standalone: false
 })
 export class BaseTableComponent<T> implements AfterContentInit {
   @Input({ required: true }) id!: string;

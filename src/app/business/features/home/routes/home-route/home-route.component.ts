@@ -4,11 +4,12 @@ import { TableModule } from "../../../../../core/modules/table/table.module";
 import { PAGE_SIZE_OPTIONS } from "../../../../../core/modules/table/constants/table.constants";
 import { MatTableDataSource } from "@angular/material/table";
 import { AccordionModule } from "../../../../../core/modules/accordion/accordion.module";
-import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { TranslateModule } from "@ngx-translate/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { KeyValue } from "@angular/common";
 import { SelectModule } from "../../../../../core/modules/select/select.module";
 import { InputModule } from "../../../../../core/modules/input/input.module";
+import { MatIconModule } from "@angular/material/icon";
 
 interface DataSource {
   id: number;
@@ -17,8 +18,7 @@ interface DataSource {
 }
 @Component({
   selector: "horus-home-route",
-  standalone: true,
-  imports: [ButtonModule, TableModule, AccordionModule, TranslateModule, SelectModule, InputModule],
+  imports: [ButtonModule, TableModule, AccordionModule, TranslateModule, SelectModule, InputModule, MatIconModule],
   templateUrl: "./home-route.component.html",
   styleUrl: "./home-route.component.sass"
 })
