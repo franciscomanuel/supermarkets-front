@@ -7,5 +7,8 @@ export const environment = {
     version
   },
   defaultLanguage: "es",
-  languages: ["es", "en"]
+  languages: ["es", "en"],
+  api: {
+    url: "http://localhost:8081"
+  }
 };

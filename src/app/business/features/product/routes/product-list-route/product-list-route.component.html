@@ -1,3 +1,8 @@
 <section class="flex-container main-page-item mt-3">
-  <p>product-list-route works!</p>
+  <horus-client-table id="products" [dataSource]="datasource" [pageSizeOptions]="rowsPerPage">
+    <horus-text-column name="productId" title="Id"></horus-text-column>
+    <horus-text-column name="name" title="Name"></horus-text-column>
+    <horus-text-column name="description" title="Description"></horus-text-column>
+    <horus-text-column name="image" title="Image"></horus-text-column>
+  </horus-client-table>
 </section>

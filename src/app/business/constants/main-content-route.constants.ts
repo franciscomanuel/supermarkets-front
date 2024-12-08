@@ -1,4 +1,4 @@
-import { MenuSinenav } from "../models";
+import { MenuSinenav } from "../interfaces";
 
 export const MENU_SIDENAV: MenuSinenav[] = [
   {
