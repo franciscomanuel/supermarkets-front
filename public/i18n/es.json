@@ -1,3 +1,20 @@
 {
-  "test": "Test [ES]"
+  "supermarket": {
+    "routes": {
+      "breadcrumb": {},
+      "common": {
+        "actions": "Acciones",
+        "filters": "Filtros",
+        "search": "Buscar",
+        "reset": "Reestablecer"
+      },
+      "product": {
+        "id": "Id",
+        "name": "Nombre",
+        "description": "Descripcion",
+        "image": "Imagen"
+      },
+      "supermarket": {}
+    }
+  }
 }

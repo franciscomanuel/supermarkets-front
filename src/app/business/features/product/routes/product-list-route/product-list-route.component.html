@@ -1,8 +1,59 @@
 <section class="flex-container main-page-item mt-3">
-  <horus-client-table id="products" [dataSource]="datasource" [pageSizeOptions]="rowsPerPage">
-    <horus-text-column name="productId" title="Id"></horus-text-column>
-    <horus-text-column name="name" title="Name"></horus-text-column>
-    <horus-text-column name="description" title="Description"></horus-text-column>
-    <horus-text-column name="image" title="Image"></horus-text-column>
-  </horus-client-table>
+  <horus-basic-accordion class="mb-8" [title]="'supermarket.routes.common.filters' | translate" [expanded]="true">
+    <div class="grid grid-cols-2 gap-x-4">
+      <horus-input
+        [formControl]="nameControl"
+        [label]="'supermarket.routes.product.name' | translate"
+        [placeholder]="'supermarket.routes.product.name' | translate"
+      ></horus-input>
+    </div>
+    <div class="flex justify-end space-x-4 p-4">
+      <horus-button
+        [text]="'supermarket.routes.common.reset' | translate"
+        type="stroked"
+        icon="clear"
+        (click)="onReset()"
+      ></horus-button>
+      <horus-button
+        [text]="'supermarket.routes.common.search' | translate"
+        type="flat"
+        icon="search"
+        (click)="onSearch()"
+      ></horus-button>
+    </div>
+  </horus-basic-accordion>
+
+  <horus-server-table
+    matSort
+    id="products-table"
+    [dataSource]="datasource"
+    [pageSizeOptions]="rowsPerPage"
+    (pageChange)="onPageChange($event)"
+    (matSortChange)="onSortChange($event)"
+  >
+    <horus-text-column-sorted
+      name="productId"
+      [title]="'supermarket.routes.product.id' | translate"
+    ></horus-text-column-sorted>
+    <horus-text-column-sorted
+      name="name"
+      [title]="'supermarket.routes.product.name' | translate"
+    ></horus-text-column-sorted>
+    <horus-text-column
+      name="description"
+      [title]="'supermarket.routes.product.description' | translate"
+    ></horus-text-column>
+    <horus-text-column name="image" [title]="'supermarket.routes.product.image' | translate"></horus-text-column>
+    <horus-custom-column name="actions">
+      <ng-template #headerTemplate>
+        <horus-button type="icon" icon="add" (click)="onAdd()"></horus-button>
+      </ng-template>
+      <ng-template #cellTemplate let-row>
+        <div class="flex justify-end">
+          <horus-button type="icon" icon="edit" (click)="onEdit()"></horus-button>
+          <horus-button type="icon" icon="delete" (click)="onDelete()"></horus-button>
+        </div>
+      </ng-template>
+    </horus-custom-column>
+  </horus-server-table>
 </section>

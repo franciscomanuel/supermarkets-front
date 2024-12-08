@@ -1,0 +1,6 @@
+@use '../../../../../core/styles/mixins.scss' as *
+
+$columns: (productId: (width: 20%), name: (width: 20%), description: (width: 20%), image: (width: 20%), actions: (width: 10%, justify: end))
+
++mat-table-columns($columns, "#products-table")
+
