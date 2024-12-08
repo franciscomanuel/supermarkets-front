@@ -1,0 +1,30 @@
+@use "sass:map";
+
+@mixin mat-table-columns($headers, $tableName) {
+  ::ng-deep #{$tableName} .mat-mdc-header-cell.mat-column- {
+    @each $colName, $props in $headers {
+      $width: map.get($props, "width");
+      $justify: map.get($props, "justify");
+      &#{$colName} {
+        width: $width !important;
+
+        @if $justify {
+          text-align: $justify !important;
+        }
+      }
+    }
+  }
+  ::ng-deep #{$tableName} .mat-mdc-cell.mat-column- {
+    @each $colName, $props in $headers {
+      $width: map.get($props, "width");
+      $justify: map.get($props, "justify");
+      &#{$colName} {
+        width: $width !important;
+
+        @if $justify {
+          text-align: $justify !important;
+        }
+      }
+    }
+  }
+}
