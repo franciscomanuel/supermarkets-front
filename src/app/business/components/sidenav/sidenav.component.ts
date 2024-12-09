@@ -1,12 +1,14 @@
-import { Component, HostBinding, inject } from "@angular/core";
+import { Component, HostBinding, inject, OnInit, signal } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MENU_SIDENAV } from "../../constants/main-content-route.constants";
 import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
 import { ApplicationService } from "../../services/application/application.service";
 import { animate, keyframes, style, transition, trigger } from "@angular/animations";
+import { LoadingService } from "../../../core/services/loading/loading.service";
 
 @Component({
   selector: "horus-sidenav",
@@ -17,7 +19,8 @@ import { animate, keyframes, style, transition, trigger } from "@angular/animati
     MatIconModule,
     RouterOutlet,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    MatProgressSpinnerModule
   ],
   templateUrl: "./sidenav.component.html",
   styleUrl: "./sidenav.component.sass",
@@ -46,10 +49,16 @@ import { animate, keyframes, style, transition, trigger } from "@angular/animati
     ])
   ]
 })
-export class SidenavComponent {
+export class SidenavComponent implements OnInit {
   @HostBinding("class") clasName = "flex-container";
 
-  readonly applicationService: ApplicationService = inject(ApplicationService);
-
+  readonly applicationService = inject(ApplicationService);
+  readonly loadingService = inject(LoadingService);
   readonly menuSidenav = MENU_SIDENAV;
+
+  loading = signal(false);
+
+  ngOnInit(): void {
+    this.loading = this.loadingService.getLoading();
+  }
 }

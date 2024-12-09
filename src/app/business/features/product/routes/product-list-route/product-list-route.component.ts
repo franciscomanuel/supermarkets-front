@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostBinding, inject, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { Component, HostBinding, inject, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { ProductsService } from "../../services/products/products.service";
 import { HttpFilterParameters, HttpRequestParameters, Pageable } from "../../../../../core/interfaces";
 import { Product } from "../../interfaces";
@@ -11,10 +11,11 @@ import { AccordionModule } from "../../../../../core/modules/accordion/accordion
 import { InputModule } from "../../../../../core/modules/input/input.module";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MatSort, MatSortModule, Sort } from "@angular/material/sort";
-import { Subject, takeUntil } from "rxjs";
+import { finalize, Subject, takeUntil } from "rxjs";
 import { ServerTableComponent } from "../../../../../core/modules/table/main/server-table/server-table.component";
 import { DialogService } from "../../../../../core/services/dialog/dialog.service";
 import { ProductFormModalComponent } from "../../components/product-form-modal/product-form-modal.component";
+import { LoadingService } from "../../../../../core/services/loading/loading.service";
 
 @Component({
   selector: "horus-product-list-route",
@@ -31,6 +32,7 @@ export class ProductListRouteComponent implements OnInit, OnDestroy {
 
   private readonly productService = inject(ProductsService);
   private readonly dialogService = inject(DialogService<ProductFormModalComponent, Product>);
+  private readonly loadingService = inject(LoadingService);
   private readonly unsubscribeSubject$ = new Subject<void>();
 
   readonly rowsPerPage = ROWS_PER_PAGE;
@@ -97,11 +99,15 @@ export class ProductListRouteComponent implements OnInit, OnDestroy {
   }
 
   private getProducts(): void {
-    this.productService.getAll(this.requestParams, this.requestFilters).subscribe((pageable: Pageable<Product>) => {
-      const { content } = pageable;
+    this.loadingService.setLoading(true);
+    this.productService
+      .getAll(this.requestParams, this.requestFilters)
+      .pipe(finalize(() => this.loadingService.setLoading(false)))
+      .subscribe((pageable: Pageable<Product>) => {
+        const { content } = pageable;
 
-      this.datasource.data = content;
-    });
+        this.datasource.data = content;
+      });
   }
 
   private createFilterForm(): void {

@@ -1,18 +1,51 @@
-import { Component, inject } from "@angular/core";
-import { MAT_DIALOG_DATA, MatDialogContent, MatDialogRef, MatDialogTitle } from "@angular/material/dialog";
+import { Component, inject, OnInit } from "@angular/core";
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { Product } from "../../interfaces";
+import { ButtonModule } from "../../../../../core/modules/button/button.module";
+import { TranslateModule } from "@ngx-translate/core";
+import { MatButtonModule } from "@angular/material/button";
+import { InputModule } from "../../../../../core/modules/input/input.module";
+import { FormControl, FormGroup } from "@angular/forms";
 
 @Component({
   selector: "horus-product-form-modal",
-  imports: [MatDialogTitle, MatDialogContent],
+  imports: [MatDialogModule, MatButtonModule, ButtonModule, TranslateModule, InputModule],
   templateUrl: "./product-form-modal.component.html",
   styleUrl: "./product-form-modal.component.sass"
 })
-export class ProductFormModalComponent {
+export class ProductFormModalComponent implements OnInit {
   readonly matDialogRef = inject(MatDialogRef<ProductFormModalComponent>);
   public data: Product = inject(MAT_DIALOG_DATA);
 
+  form!: FormGroup;
+
+  get nameControl(): FormControl<number | string> {
+    return this.form.get("name") as FormControl<string>;
+  }
+
+  get descriptionControl(): FormControl<number | string> {
+    return this.form.get("description") as FormControl<string>;
+  }
+
+  get imageControl(): FormControl<number | string> {
+    return this.form.get("image") as FormControl<string>;
+  }
+
+  ngOnInit(): void {
+    this.createForm();
+  }
+
+  onSave(): void {}
+
   onClose(): void {
     this.matDialogRef.close();
+  }
+
+  private createForm(): void {
+    this.form = new FormGroup({
+      name: new FormControl("", { nonNullable: true }),
+      description: new FormControl("", { nonNullable: true }),
+      image: new FormControl("", { nonNullable: true })
+    });
   }
 }

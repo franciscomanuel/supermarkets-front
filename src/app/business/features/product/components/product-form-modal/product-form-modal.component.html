@@ -1,24 +1,40 @@
-<h2 mat-dialog-title>Favorite Animal</h2>
+<div class="flex justify-between items-center">
+  <h2 mat-dialog-title>Favorite Animal</h2>
+  <horus-button class="pr-4" type="icon" icon="close" (click)="onClose()"></horus-button>
+</div>
 <mat-dialog-content>
-  My favorite animal is:
-  <ul>
-    <li>
-      @if (data.name === "Tomate triturado") {
-        <span>&#10003;</span>
-      }
-      Panda
-    </li>
-    <li>
-      @if (data.name === "Cacahuetes") {
-        <span>&#10003;</span>
-      }
-      Unicorn
-    </li>
-    <li>
-      @if (data.name === "Cerveza") {
-        <span>&#10003;</span>
-      }
-      Lion
-    </li>
-  </ul>
+  <div class="grid grid-cols-2 gap-x-4">
+    <horus-input
+      [formControl]="nameControl"
+      [label]="'supermarket.routes.product.name' | translate"
+      [placeholder]="'supermarket.routes.product.name' | translate"
+    ></horus-input>
+    <horus-input
+      [formControl]="descriptionControl"
+      [label]="'supermarket.routes.product.description' | translate"
+      [placeholder]="'supermarket.routes.product.description' | translate"
+    ></horus-input>
+
+    <!-- <horus-input
+      [formControl]="imageControl"
+      [label]="'supermarket.routes.product.image' | translate"
+      [placeholder]="'supermarket.routes.product.image' | translate"
+    ></horus-input> -->
+  </div>
 </mat-dialog-content>
+
+<mat-dialog-actions align="end" class="space-x-4">
+  <horus-button
+    type="stroked"
+    icon="close"
+    [text]="'supermarket.routes.common.close' | translate"
+    (click)="onClose()"
+  ></horus-button>
+  <horus-button
+    cdkFocusInitial
+    type="flat"
+    icon="save"
+    [text]="'supermarket.routes.common.save' | translate"
+    (click)="onSave()"
+  ></horus-button>
+</mat-dialog-actions>

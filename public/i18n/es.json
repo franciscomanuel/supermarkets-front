@@ -6,7 +6,9 @@
         "actions": "Acciones",
         "filters": "Filtros",
         "search": "Buscar",
-        "reset": "Reestablecer"
+        "reset": "Reestablecer",
+        "save": "Guardar",
+        "close": "Cerrar"
       },
       "product": {
         "id": "Id",
