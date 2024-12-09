@@ -3,12 +3,13 @@ import { BaseTableComponent } from "../base/base-table.component";
 import { MatTableDataSource } from "@angular/material/table";
 import { Subject, takeUntil } from "rxjs";
 import { PageEvent } from "@angular/material/paginator";
+import { PageChange } from "../../interfaces";
 
 @Component({
-    selector: "horus-server-table",
-    templateUrl: "../base/table-base.component.html",
-    styleUrl: "../base/base.table.component.sass",
-    standalone: false
+  selector: "horus-server-table",
+  templateUrl: "../base/table-base.component.html",
+  styleUrl: "../base/base.table.component.sass",
+  standalone: false
 })
 export class ServerTableComponent<T> extends BaseTableComponent<T> implements OnInit, OnDestroy {
   private readonly unsubscribeSubject$ = new Subject<void>();
@@ -19,11 +20,12 @@ export class ServerTableComponent<T> extends BaseTableComponent<T> implements On
     this.table.dataSource = this._auxiliaryDataSource;
   }
 
-  @Output() pageChange = new EventEmitter<unknown>();
+  @Output() pageChange = new EventEmitter<PageChange>();
 
   ngOnInit(): void {
     this.subscribePaginatorChange();
   }
+
   ngOnDestroy(): void {
     this.unsubscribeSubject$.next();
     this.unsubscribeSubject$.complete();

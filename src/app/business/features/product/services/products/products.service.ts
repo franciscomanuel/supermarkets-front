@@ -9,7 +9,7 @@ import { mapToPageable } from "../../../../../core/utils/http-functions.utils";
 @Injectable({
   providedIn: "root"
 })
-export class ProductsService extends HttpService<Product, Pageable<Product>> {
+export class ProductsService extends HttpService<Product> {
   endpoint(): string {
     return "products";
   }
@@ -19,6 +19,18 @@ export class ProductsService extends HttpService<Product, Pageable<Product>> {
     filter?: HttpFilterParameters,
     headers?: HttpHeaderParameters
   ): Observable<Pageable<Product>> {
-    return this.get(params, filter, headers).pipe(map(mapToPageable<Product>));
+    return this.get<Pageable<Product>>(params, filter, headers).pipe(map(mapToPageable<Product>));
+  }
+
+  save(product: Product): Observable<Product> {
+    return this.post<Product>(product);
+  }
+
+  update(product: Product): Observable<Product> {
+    return this.put<Product>(product);
+  }
+
+  remove(id: string): Observable<void> {
+    return this.delete<void>(id);
   }
 }

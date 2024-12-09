@@ -11,11 +11,14 @@ import { AccordionModule } from "../../../../../core/modules/accordion/accordion
 import { InputModule } from "../../../../../core/modules/input/input.module";
 import { FormControl, FormGroup } from "@angular/forms";
 import { MatSort, MatSortModule, Sort } from "@angular/material/sort";
-import { finalize, Subject, takeUntil } from "rxjs";
+import { filter, finalize, Subject, takeUntil } from "rxjs";
 import { ServerTableComponent } from "../../../../../core/modules/table/main/server-table/server-table.component";
 import { DialogService } from "../../../../../core/services/dialog/dialog.service";
 import { ProductFormModalComponent } from "../../components/product-form-modal/product-form-modal.component";
 import { LoadingService } from "../../../../../core/services/loading/loading.service";
+import { PageChange } from "../../../../../core/modules/table/interfaces";
+import { buildHttpRequestParameters } from "../../../../../core/utils/http-request-parameters.utils";
+import { MatDialogConfig } from "@angular/material/dialog";
 
 @Component({
   selector: "horus-product-list-route",
@@ -44,6 +47,8 @@ export class ProductListRouteComponent implements OnInit, OnDestroy {
   requestFilters: HttpFilterParameters = {};
   datasource: MatTableDataSource<Product> = new MatTableDataSource();
   filterForm!: FormGroup;
+  pageSize!: number;
+  totalElements!: number;
 
   get nameControl(): FormControl<number | string> {
     return this.filterForm.get("name") as FormControl<string>;
@@ -66,36 +71,52 @@ export class ProductListRouteComponent implements OnInit, OnDestroy {
   }
 
   onSearch(): void {
-    const name = this.filterForm.get("name")?.value;
+    const name = this.filterForm.get("name")?.value.trim();
 
     this.requestFilters = !!name ? { name } : {};
+    this.requestParams = {
+      ...INITIAL_REQUEST_PARAMS,
+      sortBy: "name,asc"
+    };
 
-    this.getProducts();
+    this.table.paginator.pageIndex > 0 ? this.table.firstPage() : this.getProducts();
   }
 
   onAdd(): void {
     this.dialogService
       .openDialog(ProductFormModalComponent)
-      .pipe(takeUntil(this.unsubscribeSubject$))
-      .subscribe((product: Product) => {
-        console.log("product: ", product);
-      });
+      .pipe(filter(Boolean), takeUntil(this.unsubscribeSubject$))
+      .subscribe((product: Product) => this.saveProduct(product));
   }
 
-  onEdit(): void {}
+  onEdit(product: Product): void {
+    const matDialogConfig: MatDialogConfig = {
+      data: product
+    };
 
-  onDelete(): void {}
+    this.dialogService
+      .openDialog(ProductFormModalComponent, matDialogConfig)
+      .pipe(filter(Boolean), takeUntil(this.unsubscribeSubject$))
+      .subscribe((productEdited: Product) => this.editProduct(productEdited));
+  }
 
-  onPageChange(value: unknown): void {
-    console.log("onPageChange value: ", value);
+  onDelete(id: string): void {
+    this.loadingService.setLoading(true);
+
+    this.productService
+      .delete(id)
+      .pipe(finalize(() => this.loadingService.setLoading(false)))
+      .subscribe(() => this.getProducts());
+  }
+
+  onPageChange(pageChange: PageChange): void {
+    this.requestParams = buildHttpRequestParameters(this.requestParams, undefined, pageChange);
+
+    this.getProducts();
   }
 
   onSortChange(sort: Sort): void {
-    this.requestParams = {
-      ...this.requestParams,
-      sortBy: `${sort.active},${sort.direction}`
-    };
-    this.getProducts();
+    this.requestParams = buildHttpRequestParameters(this.requestParams, sort);
   }
 
   private getProducts(): void {
@@ -104,10 +125,31 @@ export class ProductListRouteComponent implements OnInit, OnDestroy {
       .getAll(this.requestParams, this.requestFilters)
       .pipe(finalize(() => this.loadingService.setLoading(false)))
       .subscribe((pageable: Pageable<Product>) => {
-        const { content } = pageable;
+        const { content, size, totalElements } = pageable;
 
         this.datasource.data = content;
+        this.pageSize = size;
+        this.totalElements = totalElements;
       });
+  }
+
+  private saveOrEditProduct(product: Product, action: "save" | "update"): void {
+    this.loadingService.setLoading(true);
+
+    const productRequest = action === "save" ? this.productService.save(product) : this.productService.update(product);
+
+    productRequest.subscribe({
+      next: () => this.getProducts(),
+      error: () => this.loadingService.setLoading(false)
+    });
+  }
+
+  private saveProduct(product: Product): void {
+    this.saveOrEditProduct(product, "save");
+  }
+
+  private editProduct(product: Product): void {
+    this.saveOrEditProduct(product, "update");
   }
 
   private createFilterForm(): void {

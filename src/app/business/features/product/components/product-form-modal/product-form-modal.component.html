@@ -14,12 +14,11 @@
       [label]="'supermarket.routes.product.description' | translate"
       [placeholder]="'supermarket.routes.product.description' | translate"
     ></horus-input>
-
-    <!-- <horus-input
+    <horus-input
       [formControl]="imageControl"
       [label]="'supermarket.routes.product.image' | translate"
       [placeholder]="'supermarket.routes.product.image' | translate"
-    ></horus-input> -->
+    ></horus-input>
   </div>
 </mat-dialog-content>
 
@@ -31,7 +30,6 @@
     (click)="onClose()"
   ></horus-button>
   <horus-button
-    cdkFocusInitial
     type="flat"
     icon="save"
     [text]="'supermarket.routes.common.save' | translate"

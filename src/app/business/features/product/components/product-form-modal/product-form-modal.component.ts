@@ -6,6 +6,7 @@ import { TranslateModule } from "@ngx-translate/core";
 import { MatButtonModule } from "@angular/material/button";
 import { InputModule } from "../../../../../core/modules/input/input.module";
 import { FormControl, FormGroup } from "@angular/forms";
+import { v4 as uuidv4 } from "uuid";
 
 @Component({
   selector: "horus-product-form-modal",
@@ -15,7 +16,7 @@ import { FormControl, FormGroup } from "@angular/forms";
 })
 export class ProductFormModalComponent implements OnInit {
   readonly matDialogRef = inject(MatDialogRef<ProductFormModalComponent>);
-  public data: Product = inject(MAT_DIALOG_DATA);
+  public product: Product = inject(MAT_DIALOG_DATA);
 
   form!: FormGroup;
 
@@ -35,17 +36,24 @@ export class ProductFormModalComponent implements OnInit {
     this.createForm();
   }
 
-  onSave(): void {}
+  onSave(): void {
+    const product = this.form.value as Product;
+    product.productId = this.product?.productId ?? uuidv4();
+
+    this.matDialogRef.close(product);
+  }
 
   onClose(): void {
     this.matDialogRef.close();
   }
 
   private createForm(): void {
+    const { name, description, image } = this.product ?? {};
+
     this.form = new FormGroup({
-      name: new FormControl("", { nonNullable: true }),
-      description: new FormControl("", { nonNullable: true }),
-      image: new FormControl("", { nonNullable: true })
+      name: new FormControl(name ?? "", { nonNullable: true }),
+      description: new FormControl(description ?? "", { nonNullable: true }),
+      image: new FormControl(image ?? "", { nonNullable: true })
     });
   }
 }

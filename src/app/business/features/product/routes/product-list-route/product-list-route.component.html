@@ -28,6 +28,8 @@
     id="products-table"
     [dataSource]="datasource"
     [pageSizeOptions]="rowsPerPage"
+    [pageSize]="pageSize"
+    [total]="totalElements"
     (pageChange)="onPageChange($event)"
     (matSortChange)="onSortChange($event)"
   >
@@ -50,8 +52,8 @@
       </ng-template>
       <ng-template #cellTemplate let-row>
         <div class="flex justify-end">
-          <horus-button type="icon" icon="edit" (click)="onEdit()"></horus-button>
-          <horus-button type="icon" icon="delete" (click)="onDelete()"></horus-button>
+          <horus-button type="icon" icon="edit" (click)="onEdit(row)"></horus-button>
+          <horus-button type="icon" icon="delete" (click)="onDelete(row.productId)"></horus-button>
         </div>
       </ng-template>
     </horus-custom-column>

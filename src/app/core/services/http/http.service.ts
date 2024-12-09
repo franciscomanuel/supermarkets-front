@@ -8,25 +8,37 @@ import { HttpHeaderParameters } from "../../interfaces/http-header-parameters.in
 @Injectable({
   providedIn: "root"
 })
-export abstract class HttpService<Request, Response> {
-  private httpClient: HttpClient;
+export abstract class HttpService<Request> {
+  private readonly httpClient: HttpClient;
 
   abstract endpoint(): string;
+
+  urlBase = environment.api.url;
 
   constructor(public injector: Injector) {
     this.httpClient = this.injector.get(HttpClient);
   }
 
-  get(
+  get<Response>(
     params?: HttpRequestParameters,
     filter?: HttpFilterParameters,
     headers?: HttpHeaderParameters
   ): Observable<Response> {
-    const urlBase = environment.api.url;
-
-    return this.httpClient.get<Response>(`${urlBase}/${this.endpoint()}`, {
+    return this.httpClient.get<Response>(`${this.urlBase}/${this.endpoint()}`, {
       headers: { ...headers },
       params: { ...params, ...filter }
     });
+  }
+
+  post<Response>(payload: Request): Observable<Response> {
+    return this.httpClient.post<Response>(`${this.urlBase}/${this.endpoint()}`, payload);
+  }
+
+  put<Response>(payload: Request): Observable<Response> {
+    return this.httpClient.put<Response>(`${this.urlBase}/${this.endpoint()}`, payload);
+  }
+
+  delete<Response>(id: string): Observable<Response> {
+    return this.httpClient.delete<Response>(`${this.urlBase}/${this.endpoint()}/${id}`);
   }
 }
